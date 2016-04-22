@@ -1,0 +1,7 @@
+<form class="login-form" {{action login model on="submit"}}>
+  {{input class="login-input" placeholder="Enter email..." value=model.email}}
+  {{input type="password" class="login-input" placeholder="Enter password" value=model.password}}
+  <button class="login-btn">Login</button>
+</form>
+
+{{outlet}}
