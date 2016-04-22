@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    googleLeaflet: {
+    apiKey: 'AIzaSyCZc2PblaL6nbaQ9ds9hKu-bS7wb3HflTc',
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
