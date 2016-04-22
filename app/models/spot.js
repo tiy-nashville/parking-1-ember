@@ -5,5 +5,5 @@ export default Model.extend({
   location: attr(),
   lighting: attr(),
   popularity: attr(),
-  type: attr()
+  type: attr(),
 });
