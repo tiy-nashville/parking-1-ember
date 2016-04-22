@@ -1,0 +1,25 @@
+<form class="submit" {{action createSpot model on="submit"}}>
+
+  <p class="submit__form">
+    <label>Location</label>
+    {{input value=model.location}}
+  </p>
+
+  <p class="submit__form">
+    <label>Type</label>
+    {{input value=model.type}}
+  </p>
+
+  <p class="submit__form">
+    <label>Lighting</label>
+    {{input value=model.lighting}}
+  </p>
+
+  <p class="submit__form">
+    <label>Popularity</label>
+    {{input value=model.popularity}}
+  </p>
+
+  <button>SUBMIT</button>
+
+</form>
