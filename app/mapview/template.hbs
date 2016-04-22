@@ -5,5 +5,10 @@
 {{spot.data.attributes.id}}
 {{spot.lighting}}
 {{/each}}
+{{#leaflet-map lat=lat lng=lng zoom=zoom}}
+  {{google-tile-layer type="ROADMAP" opacity=0.9}}
+
+{{/leaflet-map}}
+<button {{action geolocate on="click"}}>Log location</button>
 <p>Yo</p>
 {{outlet}}
