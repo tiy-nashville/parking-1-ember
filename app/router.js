@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('sign-up');
   this.route('submit');
+  this.route(`spot-view`, { path: `/:id` });
 });
 
 export default Router;
