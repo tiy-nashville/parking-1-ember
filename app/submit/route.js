@@ -4,8 +4,8 @@ export default Ember.Route.extend({
   model() {
     return {
       location: ``,
-      lighting: ``,
-      popularity: ``,
+      lighting: 1,
+      popularity: 1,
       type: ``,
     };
   },
