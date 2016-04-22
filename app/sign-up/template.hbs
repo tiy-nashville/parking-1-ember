@@ -1,3 +1,11 @@
 <h2>this is the sign up page</h2>
 
+<form {{action registerUser model on="submit"}}>
+  <label>Email</label>
+  {{input class="sign-up-input" type="text" placeholder="email" value=model.email}}
+  <label>Password</label>
+  {{input class="sign-up-input" type="password" placeholder="password" value=model.password}}
+  <button>Submit</button>
+</form>
+
 {{outlet}}
