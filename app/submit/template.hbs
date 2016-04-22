@@ -1,8 +1,13 @@
 <form class="submit" {{action createSpot model on="submit"}}>
 
   <p class="submit__form">
-    <label>Location</label>
-    {{input value=model.location}}
+    <label>Lat</label>
+    {{input value=model.location.lat}}
+  </p>
+
+  <p class="submit__form">
+    <label>Lon</label>
+    {{input value=model.location.lng}}
   </p>
 
   <p class="submit__form">
