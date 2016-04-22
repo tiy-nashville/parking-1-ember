@@ -2,6 +2,10 @@
 
 module.exports = function(environment) {
   var ENV = {
+    googleFonts: [
+     'Questrial:400',
+   ],
+
     modulePrefix: 'nashville-free-park',
     environment: environment,
     baseURL: '/',
@@ -19,7 +23,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
   };
 
   if (environment === 'development') {
@@ -44,7 +48,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
 
-  }
-
+  };
   return ENV;
 };
