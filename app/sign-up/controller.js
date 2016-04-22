@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   registerUser(attr) {
-    const user = this.store.createRecord(`user`, attr);
+    const parker = this.store.createRecord(`parker`, attr);
 
-    user.save();
+    parker.save();
   },
 });
