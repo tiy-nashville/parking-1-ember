@@ -1,7 +1,9 @@
 
 <h3>Free Parking Spot</h3>
 
+<p>location: {{model.location}}</p>
 <p>Type: {{model.type}}</p>
-{{log model}}
-
+<p>lighting: {{model.lighting}}</p>
+<p>popularity: {{model.popularity}}</p>
+{{#link-to "mapview"}} <p>Back</p> {{/link-to}}
 {{outlet}}

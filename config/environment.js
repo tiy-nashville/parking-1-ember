@@ -1,17 +1,19 @@
 /* jshint node: true */
 
+require(`dotenv`).config();
+
 module.exports = function(environment) {
   var ENV = {
     googleFonts: [
-     'Questrial:400',
-   ],
+      'Questrial:400',
+    ],
 
     modulePrefix: 'nashville-free-park',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
     googleLeaflet: {
-    apiKey: 'AIzaSyCZc2PblaL6nbaQ9ds9hKu-bS7wb3HflTc',
+      apiKey: process.env.GOOGLE_API_KEY,
     },
     EmberENV: {
       FEATURES: {
