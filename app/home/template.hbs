@@ -1,16 +1,21 @@
 
-<div class="home">
-  <h2 class="home__title">Nashville</h2>
-  <i class="fa fa-car" aria-hidden="true"></i>
-  <h2 class="home__title">Free Park</h2>
+
+<div class="button-container">
+  {{#link-to "sign-up" }}
+    <div class="home__but">
+      <button class="button"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</button>
+    </div>
+  {{/link-to}}
+
+  {{#link-to "login"}}
+    <div class="home__but">
+      <button class="button"><i class="fa fa-sign-in" aria-hidden="true"></i>Log In</button>
+    </div>
+  {{/link-to}}
 </div>
 
-{{#link-to "sign-up" }}
-<button class="home__button signup">Sign Up</button>
-{{/link-to}}
 
-{{#link-to "login"}}
-<button class="home__button login">Log In</button>
-{{/link-to}}
 
-{{outlet}}
+
+
+  {{outlet}}
