@@ -1,13 +1,19 @@
 /* jshint node: true */
 
+require(`dotenv`).config();
+
 module.exports = function(environment) {
   var ENV = {
+    googleFonts: [
+      'Questrial:400',
+    ],
+
     modulePrefix: 'nashville-free-park',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
     googleLeaflet: {
-    apiKey: 'AIzaSyCZc2PblaL6nbaQ9ds9hKu-bS7wb3HflTc',
+      apiKey: process.env.GOOGLE_API_KEY,
     },
     EmberENV: {
       FEATURES: {
@@ -19,7 +25,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
   };
 
   if (environment === 'development') {
@@ -44,7 +50,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
 
-  }
-
+  };
   return ENV;
 };

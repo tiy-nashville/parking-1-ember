@@ -5,13 +5,25 @@
 {{spot.data.attributes.id}}
 {{spot.lighting}}
 {{/each}}
-<<<<<<< HEAD
 {{#leaflet-map lat=lat lng=lng zoom=zoom}}
   {{google-tile-layer type="ROADMAP" opacity=0.9}}
 
+{{#if geolocateran}}
+  {{#marker-layer location=emberspot}}
+    <h3>My house</h3>
+    {{address.street}}<br>
+    {{address.city}}, {{address.state}} {{address.zip}}
+  {{/marker-layer}}
+{{/if}}
+
 {{/leaflet-map}}
-<button {{action geolocate on="click"}}>Log location</button>
-=======
->>>>>>> 2f2e8973e71a606ca0f96d3540f1f59633179dd7
+<form class="location-form" {{action geolocate address on="submit"}}>
+  {{input value=address.street placeholder="street..."}}
+  {{input value=address.city placeholder="city"}}
+  {{input value=address.state placeholder="state (TN)"}}
+  <button>Log location</button>
+</form>
+<button {{action geoFindMe}}>Or Use your current location</button>
+
 <p>Yo</p>
 {{outlet}}
