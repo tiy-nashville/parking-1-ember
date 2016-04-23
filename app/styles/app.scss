@@ -1,3 +1,4 @@
+@import 'mapview';
 html {
   box-sizing: border-box;
 }
@@ -13,11 +14,4 @@ html {
 
 body {
   font-family: Questrial;
-}
-
-.leaflet-container {
-  width: 60%;
-  height: 60vh;
-  box-shadow: 0px 10px 15px black;
-  margin: auto;
 }
