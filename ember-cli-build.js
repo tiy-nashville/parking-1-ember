@@ -7,6 +7,9 @@ module.exports = function(defaults) {
     babel: {
       includePolyfill: true,
     },
+    fingerprint: {
+      extensions: ['js', 'css', 'map'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
