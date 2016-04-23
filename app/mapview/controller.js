@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
     const lat = this.get(`lat`);
     const lng = this.get(`lng`);
     const location = { lat, lng };
-    const spot = this.store.createRecord(`spot`, {lighting, popularity, type, location});
+    const spot = this.store.createRecord(`spot`, { lighting, popularity, type, location });
 
     spot.save();
   },

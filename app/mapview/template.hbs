@@ -1,12 +1,22 @@
-{{#each model as |spot|}}
-<p>
-  {{spot.type}}
-</p>
-{{spot.data.attributes.id}}
-{{spot.lighting}}
-{{/each}}
-{{#leaflet-map lat=lat lng=lng zoom=zoom}}
-  {{google-tile-layer type="ROADMAP" opacity=0.9}}
+<div class="route-container">
+  <div class="sidebar">
+    <ul class="spot-list">
+      {{#each model as |spot|}}
+      <li class="spot-list__item">
+        Type: {{spot.type}}
+      </li>
+      <li class="spot-list__item">
+        Location: {{spot.location.lat}}, {{spot.location.lng}}
+      </li>
+      <li class="spot-list__item">
+        Lighting: {{spot.lighting}}
+      </li>
+      <li class="spot-list__item">
+        Popularity: {{spot.popularity}}
+      </li>
+      {{/each}}
+    </ul>
+    </div>
 
 {{/leaflet-map}}
 <button {{action geolocate on="click"}}>Log location</button>
