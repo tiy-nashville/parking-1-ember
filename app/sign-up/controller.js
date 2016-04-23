@@ -6,6 +6,10 @@ export default Ember.Controller.extend({
 
     parker.save().then( () => {
       this.transitionToRoute(`login`);
+    })
+    .catch((error) => {
+      window.alert('User already exists!')
+      this.transitionToRoute(`home`);
     });
   },
 });

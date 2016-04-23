@@ -74,7 +74,19 @@ export default Ember.Controller.extend({
     const location = { lat, lng };
     const spot = this.store.createRecord(`spot`, { lighting, popularity, type, location });
 
-    spot.save();
+    spot.save().then(() => {
+      this.clearForm();
+      window.alert(`Parking spot has been saved!`)
+    });
+  },
+
+  clearForm() {
+    this.set(`type`, ``);
+    this.set(`lighting`, ``);
+    this.set(`rating`, ``);
+    this.set(`address.street`, ``);
+    this.set(`address.city`, ``);
+    this.set(`address.state`, ``);
   },
 
   saveAddress() {

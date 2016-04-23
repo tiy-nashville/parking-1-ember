@@ -4,9 +4,9 @@
     <div class="form-container">
       <h2 class="form-container__title">Enter a new Parking Spot</h2>
       <form class="location-form" {{action geolocate address on="submit"}}>
-        {{input value=address.street placeholder="street..."}}
-        {{input value=address.city placeholder="city"}}
-        {{input value=address.state placeholder="state (TN)"}}
+        {{input value=address.street placeholder="Street..."}}
+        {{input value=address.city placeholder="City..."}}
+        {{input value=address.state placeholder="State..."}}
         <button class="mvbutton">Log location</button>
       </form>
       <form class="location-form">
@@ -37,7 +37,6 @@
 
       {{#if geolocateran}}
       {{#marker-layer location=emberspot}}
-      <h3>My house</h3>
       {{address.street}}<br>
       {{address.city}}, {{address.state}} {{address.zip}}
       {{/marker-layer}}
