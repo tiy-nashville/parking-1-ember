@@ -1,29 +1,59 @@
-{{#each model as |spot|}}
-<p>
-  {{spot.type}}
-</p>
-{{spot.data.attributes.id}}
-{{spot.lighting}}
-{{/each}}
-{{#leaflet-map lat=lat lng=lng zoom=zoom}}
-  {{google-tile-layer type="ROADMAP" opacity=0.9}}
+<div class="route-container">
+  <div class="sidebar">
+    <ul class="spot-list">
+      {{#each model as |spot|}}
+      <li class="spot-list__item">
+        Type: {{spot.type}}
+      </li>
+      <li class="spot-list__item">
+        Location: {{spot.location.lat}}, {{spot.location.lng}}
+      </li>
+      <li class="spot-list__item">
+        Lighting: {{spot.lighting}}
+      </li>
+      <li class="spot-list__item">
+        Popularity: {{spot.popularity}}
+      </li>
+      {{/each}}
+    </ul>
+    </div>
 
-{{#if geolocateran}}
-  {{#marker-layer location=emberspot}}
-    <h3>My house</h3>
-    {{address.street}}<br>
-    {{address.city}}, {{address.state}} {{address.zip}}
-  {{/marker-layer}}
-{{/if}}
+  <div class="main-content">
+    <div class="form-container">
+      <form class="location-form" {{action geolocate address on="submit"}}>
+        {{input value=address.street placeholder="street..."}}
+        {{input value=address.city placeholder="city"}}
+        {{input value=address.state placeholder="state (TN)"}}
+        <button>Log location</button>
+      </form>
+      <button {{action saveSpot}}>Save Location</button>
+      <button {{action geoFindMe}}>Or Use your current location</button>
+      <div id="out"></div>
+    </div>
 
-{{/leaflet-map}}
-<form class="location-form" {{action geolocate address on="submit"}}>
-  {{input value=address.street placeholder="street..."}}
-  {{input value=address.city placeholder="city"}}
-  {{input value=address.state placeholder="state (TN)"}}
-  <button>Log location</button>
-</form>
-<button {{action geoFindMe}}>Or Use your current location</button>
+    <div class="map-container">
+      {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+      {{google-tile-layer type="ROADMAP" opacity=0.9}}
 
-<p>Yo</p>
+      {{#if geolocateran}}
+      {{#marker-layer location=emberspot}}
+      <h3>My house</h3>
+      {{address.street}}<br>
+      {{address.city}}, {{address.state}} {{address.zip}}
+      {{/marker-layer}}
+      {{/if}}
+
+      {{#if geofindmeran}}
+      {{#marker-layer location=emberspot}}
+      <h3>My house</h3>
+      {{address.street}}<br>
+      {{address.city}}, {{address.state}} {{address.zip}}
+      {{/marker-layer}}
+      {{/if}}
+
+      {{/leaflet-map}}
+    </div>
+  </div>
+
+</div>
 {{outlet}}
