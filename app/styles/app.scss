@@ -1,4 +1,10 @@
+@import "base";
+@import "home";
+@import "login";
+@import "mapview";
+@import "signup";
 @import 'mapview';
+
 html {
   box-sizing: border-box;
 }
@@ -13,5 +19,8 @@ html {
 }
 
 body {
+  background-color: $brand-light-orange;
+  color: white;
   font-family: Questrial;
+  margin: 0;
 }
