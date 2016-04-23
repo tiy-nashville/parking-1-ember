@@ -1,8 +1,9 @@
-<h2 class="form-header">Log-in to see free parking!</h2>
-<form class="login-form" {{action login model on="submit"}}>
-  {{input class="login-input" placeholder="Enter email..." value=model.email}}
-  {{input type="password" class="login-input" placeholder="Enter password" value=model.password}}
-  <button class="login-btn">Login</button>
-</form>
-
+<div class="form-container">
+  <h2 class="form-container__title">Log-in to see free parking!</h2>
+  <form class="location-form" {{action login model on="submit"}}>
+    {{input class="login-input" placeholder="Enter email..." value=model.email}}
+    {{input type="password" class="login-input" placeholder="Enter password" value=model.password}}
+    <button class="mvbutton">Login</button>
+  </form>
+  </div>
 {{outlet}}
