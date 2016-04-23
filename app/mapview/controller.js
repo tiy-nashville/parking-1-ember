@@ -26,6 +26,10 @@ export default Ember.Controller.extend({
     zip: ``,
   },
 
+  type: ``,
+  lighting: ``,
+  rating: ``,
+
   geolocate(address) {
     Ember.set(this, `address`, address);
     var rstreet = address.street.split(' ').join('+');
@@ -62,9 +66,9 @@ export default Ember.Controller.extend({
   },
 
   saveSpot() {
-    const lighting = 1;
-    const popularity = 1;
-    const type = `garage`;
+    const lighting = this.get(`lighting`);
+    const popularity = this.get(`rating`);
+    const type = this.get(`type`);
     const lat = this.get(`lat`);
     const lng = this.get(`lng`);
     const location = { lat, lng };
@@ -77,5 +81,9 @@ export default Ember.Controller.extend({
     const lat = this.get(`lat`);
     const lng = this.get(`lng`);
     console.log(lat, lng);
+  },
+
+  deleteRecord(spot) {
+    spot.destroyRecord();
   }
 });
