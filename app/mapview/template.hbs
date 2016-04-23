@@ -28,13 +28,15 @@
         {{input value=address.street placeholder="street..."}}
         {{input value=address.city placeholder="city"}}
         {{input value=address.state placeholder="state (TN)"}}
-        <button>Log location</button>
+        <button class="mvbutton">Log location</button>
       </form>
-        {{input value=type placeholder="Type..."}}
+      <form class="location-form">
+          {{input value=type placeholder="Type..."}}
         {{input value=lighting placeholder="Lighting..."}}
         {{input value=rating placeholder="Rating"}}
-      <button {{action saveSpot}}>Save Location</button>
-      <button {{action geoFindMe}}>Or Use your current location</button>
+              <button class="mvbutton"{{action saveSpot}}>Save Location</button>
+              <button class="mvbutton"{{action geoFindMe}}>Or Use your current location</button>
+      </form>
       {{#link-to "logout"}} <h3 class="logout">Log Out</h3> {{/link-to}}
       <div id="out"></div>
     </div>
