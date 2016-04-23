@@ -4,6 +4,7 @@
 /dist
 /tmp
 .env
+.DS_store
 
 # dependencies
 /node_modules
