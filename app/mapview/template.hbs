@@ -35,7 +35,7 @@
         {{input value=rating placeholder="Rating"}}
       <button {{action saveSpot}}>Save Location</button>
       <button {{action geoFindMe}}>Or Use your current location</button>
-      <button {{action reversegeofind 36.174465 -86.767960}}>Reverse Geocode</button>
+      {{#link-to "logout"}} <h3 class="logout">Log Out</h3> {{/link-to}}
       <div id="out"></div>
     </div>
 
