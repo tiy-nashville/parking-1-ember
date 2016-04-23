@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('submit');
   this.route(`spot-view`, { path: `/:id` });
   this.route('mapview');
+  this.route('logout');
 });
 
 export default Router;
