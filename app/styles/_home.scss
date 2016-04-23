@@ -1,29 +1,50 @@
+
+.container {
+  height: 100vh;
+  background: $haze;
+}
+
+.button-container {
+  padding-top: 5rem;
+}
+
 .home {
-  padding: $gutter;
   display: flex;
   justify-content: center;
+  padding: $gutter;
   background: $brand-lightblue;
   box-shadow: 2px 2px 2px $brand-blue;
 
   &__title {
     margin: 0;
-    line-height: 2rem;
+    line-height: 6rem;
   }
 
-  &__button {
-
+  &__but {
+    padding: 2rem 0;
+    max-width: 20rem;
+    margin: auto;
+    color: $brand-blue;
   }
 
 }
 
-.signup {
-
+.button {
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+  background: $brand-green;
+  color: $brand-blue;
+  font-size: 2rem;
+  box-shadow: 1px 1px 4px $brand-blue;
  }
 
-.login {
-
+.fa-car {
+  padding: 0 1rem;
+  font-size: 5rem;
 }
 
 .fa {
-  font-size: 5rem;
+  padding: 0 2rem;
 }
