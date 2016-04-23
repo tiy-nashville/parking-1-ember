@@ -17,6 +17,7 @@ export default Ember.Controller.extend({
   zoom: 12,
   emberspot: [36.174455, -86.767890],
   geolocateran: false,
+  geofindmeran: false,
 
   address: {
     street: ``,
@@ -34,6 +35,7 @@ export default Ember.Controller.extend({
     return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${rstreet},${rcity}+${rstate}&key=${config.googleLeaflet.apiKey}`)
     .then((r) => r.json())
     .then((data) => {
+      console.log(data);
       const components = data.results[0].address_components;
       const { lat, lng } = data.results[0].geometry.location;
       this.set(`address.zip`, findPostCode(components));
@@ -51,25 +53,29 @@ export default Ember.Controller.extend({
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
     return;
   }
+  navigator.geolocation.getCurrentPosition((position) => {
+    Ember.set(this, `lng`, position.coords.longitude);
+    Ember.set(this, `lat`, position.coords.latitude);
+    Ember.set(this, `emberspot`, [position.coords.latitude, position.coords.longitude]);
+  });
+  Ember.set(this, `geofindmeran`, true);
+  },
 
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
+  saveSpot() {
+    const lighting = 1;
+    const popularity = 1;
+    const type = `garage`;
+    const lat = this.get(`lat`);
+    const lng = this.get(`lng`);
+    const location = { lat, lng };
+    const spot = this.store.createRecord(`spot`, {lighting, popularity, type, location});
 
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    spot.save();
+  },
 
-    var img = new Image();
-    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-    output.appendChild(img);
-  };
-
-  function error() {
-    output.innerHTML = "Unable to retrieve your location";
-  };
-
-  output.innerHTML = "<p>Locating…</p>";
-
-  navigator.geolocation.getCurrentPosition(success, error);
-}
+  saveAddress() {
+    const lat = this.get(`lat`);
+    const lng = this.get(`lng`);
+    console.log(lat, lng);
+  }
 });
