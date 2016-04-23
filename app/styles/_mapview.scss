@@ -25,4 +25,26 @@
 
 .leaflet-popup-content {
   color: black;
+  width: 10rem;
+}
+
+.img-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+}
+
+.street-view-img {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.street-view-btn {
+  position: fixed;
+  top: 31%;
+  right: 29%;
 }

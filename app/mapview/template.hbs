@@ -1,6 +1,6 @@
 
 <div class="route-container">
-  <div class="sidebar">
+  {{!-- <div class="sidebar">
     <ul class="spot-list">
       {{#each model as |spot|}}
       <li class="spot-list__item">
@@ -18,7 +18,7 @@
       <button {{action deleteRecord spot}}>X</button>
       {{/each}}
     </ul>
-    </div>
+    </div> --}}
 
   <div class="main-content">
     <div class="form-container">
@@ -34,18 +34,21 @@
         {{input value=rating placeholder="Rating"}}
       <button {{action saveSpot}}>Save Location</button>
       <button {{action geoFindMe}}>Or Use your current location</button>
+      <button {{action reversegeofind 36.174465 -86.767960}}>Reverse Geocode</button>
       <div id="out"></div>
     </div>
 
     <div class="map-container">
       {{#leaflet-map lat=lat lng=lng zoom=zoom}}
-      {{google-tile-layer type="ROADMAP" opacity=0.9}}
+      {{google-tile-layer type="HYBRID" opacity=0.9}}
 
       {{#each model as |spot|}}
-        {{#marker-layer location=spot.location}}
+        {{#marker-layer location=spot.location action="clickedon"}}
+          {{address-from-location location=spot.location}}<br>
           Type: {{spot.type}}<br>
           Rating: {{spot.popularity}}<br>
           Lighting: {{spot.lighting}}<br>
+          <button {{action streetview spot.location}}>Streetview!</button>
 
         {{/marker-layer}}
       {{/each}}
@@ -69,6 +72,11 @@
       {{/leaflet-map}}
     </div>
   </div>
-
 </div>
+{{#if streetviewUrl}}
+  <div class="img-container">
+    <img class="street-view-img" src="{{streetviewUrl}}" alt="">
+    <button{{action derender}} class="street-view-btn">X</button>
+  </div>
+{{/if}}
 {{outlet}}
