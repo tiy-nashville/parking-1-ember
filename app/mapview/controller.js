@@ -26,6 +26,10 @@ export default Ember.Controller.extend({
     zip: ``,
   },
 
+  type: ``,
+  lighting: ``,
+  rating: ``,
+
   geolocate(address) {
     Ember.set(this, `address`, address);
     var rstreet = address.street.split(' ').join('+');
@@ -42,7 +46,7 @@ export default Ember.Controller.extend({
       this.set(`emberspot`, [lat, lng]);
       this.set(`geolocateran`, true);
       this.set(`lat`, data.results[0].geometry.location.lat);
-      this.set(`lng`, data.results[0].geometry.location.lng)
+      this.set(`lng`, data.results[0].geometry.location.lng);
     });
   },
 
@@ -62,9 +66,9 @@ export default Ember.Controller.extend({
   },
 
   saveSpot() {
-    const lighting = 1;
-    const popularity = 1;
-    const type = `garage`;
+    const lighting = this.get(`lighting`);
+    const popularity = this.get(`rating`);
+    const type = this.get(`type`);
     const lat = this.get(`lat`);
     const lng = this.get(`lng`);
     const location = { lat, lng };
@@ -77,5 +81,29 @@ export default Ember.Controller.extend({
     const lat = this.get(`lat`);
     const lng = this.get(`lng`);
     console.log(lat, lng);
+  },
+
+  deleteRecord(spot) {
+    spot.destroyRecord();
+  },
+
+  reversegeofind(lat, lng) {
+    var geocoder = new google.maps.Geocoder();
+    var latlng = {lat,lng};
+    console.log(latlng);
+
+    geocoder.geocode({'location': latlng}, (results) => {
+      console.log(results);
+    });
+  },
+
+  streetview({lat, lng}) {
+    this.set(`streetviewUrl`,
+      `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=` +
+      `${lat},${lng}&heading=151.78&pitch=-0.76&key=${config.googleLeaflet.apiKey}`);
+  },
+
+  derender() {
+    this.set(`streetviewUrl`, false)
   }
 });

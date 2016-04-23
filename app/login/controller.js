@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     console.log(email , password)
     this.get(`session`).authenticate(`authenticator:application`, email, password)
       .then(() => {
-        this.transitionToRoute(`home`);
+        this.transitionToRoute(`mapview`);
       })
       .catch((reason) => {
         console.log(reason);
